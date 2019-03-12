@@ -1,1 +1,28 @@
+Dhruvil Patel, Michael Yang
+CS214: Project 1
+
+The large array (static char myblock[4096]) was created to simulate how memory main memory. Using #define, a macro was created that made it so calls to malloc and free were redirected to mymalloc and myfree, respectively. This was done in the following fashion:
+
+	#define malloc( x ) mymalloc( x, __FILE__, __LINE__ ) 
+	#define free( x ) myfree( x, __FILE__, __LINE__ )
+
+The preprocessor directives, __FILE__ and __LINE__, were added to the call so as to provide useful information when the function calls failed. This allowed the file and the line in which the error occured to be printed out so that the location of the error can be found. Metadata about the allocated space is stored in the array alongside user data.
+
+mymalloc:
+* we check if asking size if 0 bytes or not
+* we check if asking size is <= storageSize
+* we used a block to keep track of pointer to navigate
+* we check a block of space ever been initialized
+* last, do iteration until notUsed block find
+* (we also spilt block into newData, unusedData to check if enough space to re-alloc for instance)
+
+myfree:
+* check if a block exists -> free
+* check to free a pointer that was never malloced
+* freeing existing pointer
+* also, we’re checking prev and next for consolidation and free it to match
+
+Workload Data and Findings:
+
+It was found that the mymalloc and myfree functions can complete all operations in under 1 microsecond. myfree function can handle inaccurate inputs and print out useful information about the error using preprocessor directives.
 

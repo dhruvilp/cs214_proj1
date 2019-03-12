@@ -1,0 +1,10 @@
+Dhruvil Patel & Michael Yang
+CS214: Project 1
+
+Workload E: Freeing pointer twice
+
+Showing end result of a test case in which a pointer that was passed to free previously is  passed to free again without assigning any memory to it. This prints out and error statement with the file name and line in which the error occurred. This demonstrates the built-in method in which the myfree handles such error while outputting useful information about where the error occurred.
+
+Workload F: Freeing memory that was not dynamically allocated
+
+This is to show that the myfree can recognize that the pointer being passed to it is not dynamically allocated and useful information about the error is printed out after catching the error.
